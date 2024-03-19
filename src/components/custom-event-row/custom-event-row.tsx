@@ -1,5 +1,5 @@
 import React, { useState, memo } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { func } from "prop-types";
 
 import { Button, Icons } from "@storybook/components";
 
@@ -71,6 +71,10 @@ const CustomEventRow = memo(
         </StyledTableCellFirst>
         <StyledTableCell>
           <StyledTextarea value={eventData} onChange={handleDataChange} />
+          </StyledTableCell>
+
+        <StyledTableCell  style={{minWidth: 200}}>
+          <PrettyPrintJsonAsList value={eventData} />
         </StyledTableCell>
         <StyledTableCell>
           <FlexedBox>
@@ -91,7 +95,8 @@ const CustomEventRow = memo(
         </StyledTableCell>
         <StyledTableCell>
           <Button
-            primary
+          style={{margin: "0px 10px"}}
+            variant="solid"
             onClick={() => fireEvent(eventName, eventData, selector)}
           >
             send
@@ -114,3 +119,23 @@ CustomEventRow.defaultProps = {
 };
 
 export default CustomEventRow;
+
+function PrettyPrintJsonAsList({ value }) {
+
+  if (value.length === 0) {
+    return null;
+  }
+
+  const data = JSON.parse(value);
+  const keys = Object.keys(data);
+
+  return (
+    <ul style={{ listStyleType: "none", padding: 0 }}>
+      {keys.map((key) => (
+        <li key={key}>
+          {key}: {data[key]}
+        </li>
+      ))}
+    </ul>
+  );
+}

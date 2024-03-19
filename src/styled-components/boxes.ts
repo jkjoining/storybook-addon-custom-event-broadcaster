@@ -4,6 +4,7 @@ export const FlexedBox = styled.div({
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'center',
+  flex: 1
 });
 
 export const IconBox = styled.div`

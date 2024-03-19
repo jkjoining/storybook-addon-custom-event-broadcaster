@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParameter } from "@storybook/manager-api";
 
-import { Icons } from "@storybook/components";
+import { Button } from "@storybook/components";
 
 import CustomEventRow from "../custom-event-row/custom-event-row";
 import { FlexedBox, IconBox } from "../../styled-components/boxes";
@@ -44,7 +44,7 @@ function CustomEventPanel() {
     setAdditionalRows(count);
   };
 
-  return (
+  return (<>
     <StyledTable>
       <thead>
         <tr>
@@ -63,17 +63,20 @@ function CustomEventPanel() {
             }
           />
         ))}
-        <StyledTableRow>
-          <td>
-            <FlexedBox onClick={addNewRow}>
-              <IconBox key="iconBox">
-                <Icons icon="add" />
-              </IconBox>
-            </FlexedBox>
-          </td>
-        </StyledTableRow>
+
       </tbody>
     </StyledTable>
+    <FlexedBox >
+      <Button
+        variant="outline"
+        onClick={addNewRow}
+        style={{ flex: 1, margin: "4px" }}
+      >
+        Add Row
+      </Button>
+
+    </FlexedBox>
+  </>
   );
 }
 

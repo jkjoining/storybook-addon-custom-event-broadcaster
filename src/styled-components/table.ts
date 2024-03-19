@@ -9,6 +9,12 @@ const tableStyle = {
   textAlign: "left",
   width: "100%",
   margin: "0px",
+      // Dark mode specific styles (overrides light mode)
+      '@media (prefers-color-scheme: dark)': {
+
+        color: '#FFFFFF', // Change text color for dark mode
+        boxShadow: 'rgb(255 255 255 / 10%) 0 0 0 1px inset', // Change box shadow for dark mode
+      },
 };
 
 export const StyledTable = styled.table(tableStyle);

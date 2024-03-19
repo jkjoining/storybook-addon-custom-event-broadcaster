@@ -16,5 +16,6 @@ addons.register(ADDON_ID, () => {
     title: "Custom Events",
     match: ({ viewMode }) => viewMode === "story",
     render: Panel,
+    
   });
 });
